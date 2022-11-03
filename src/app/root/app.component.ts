@@ -10,6 +10,30 @@ export class AppComponent {
   surname: string = '';
   private val: string = 'Enter your Name';
 
+  isLogged: boolean = false;
+  accountUsername: string = '';
+
+  constructor() {
+    this.checkUser();
+  }
+
+  checkUser(): void {
+    let user_str = localStorage.getItem('user');
+    if (user_str === null) {
+      return;
+    } else {
+      let user = JSON.parse(user_str);
+      this.accountUsername = user.username;
+      this.isLogged = true;
+    }
+  }
+
+  logout(): void {
+    localStorage.clear()
+    this.accountUsername = '';
+    this.isLogged = false;
+  }
+
   func(): void {
     console.log(this.name);
     console.log(this.surname);

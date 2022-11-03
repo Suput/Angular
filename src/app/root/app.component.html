@@ -1,89 +1,15 @@
 <div>
-  <p>Моё имя: {{ name }}</p>
-</div>
-<div>
-  <input type="number" [(ngModel)]="name" />
-  <br />
-  <input type="text" [(ngModel)]="surname" />
-  <br />
-  <button (click)="test2()">Press me</button>
-</div>
-<!-- <div>
-  <app-home></app-home>
-  <app-about></app-about>
-  <app-not-found></app-not-found>
-</div> -->
-<div>
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a
-        class="navbar-brand"
-        routerLink="/home"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Главная</a
-      >
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!-- <li class="nav-item">
-            <a
-              class="nav-link"
-              aria-current="page"
-              routerLink="/home"
-              routerLinkActive="active-link"
-              [routerLinkActiveOptions]="{ exact: true }"
-              >Главная</a
-            >
-          </li> -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              routerLink="/about"
-              routerLinkActive="active"
-              >О сайте</a
-            >
-          </li><li class="nav-item">
-            <a
-              class="nav-link"
-              routerLink="/temp"
-              routerLinkActive="active"
-              >Для тестов</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              routerLink="/aboug"
-              routerLinkActive="active"
-              >Не существующая ссылка</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- <nav>
+  <nav>
     <a
-      routerLink="/home"
+      routerLink="/"
       routerLinkActive="active-link"
       [routerLinkActiveOptions]="{ exact: true }"
-      >Главная</a
+      >Список машин</a
     >
-    <a routerLink="/about" routerLinkActive="active-link">О сайте</a>
-    <a routerLink="/aboug" routerLinkActive="active-link"
-      >Не существующая ссылка</a
-    >
-  </nav> -->
+    <a *ngIf="!isLogged" routerLink="/login" routerLinkActive="active-link">Вход</a>
+    <a *ngIf="!isLogged" routerLink="/register" routerLinkActive="active-link">Регистрация</a>
+    <a *ngIf="isLogged" (click)="logout()">Выйти из аккаунта {{accountUsername}}</a>
+    <button (click)="checkUser()">Обновить меню</button>
+  </nav>
   <router-outlet></router-outlet>
 </div>
