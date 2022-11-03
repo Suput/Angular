@@ -1,0 +1,8 @@
+a {
+    display: block;
+}
+
+.active-link {
+    color: red;
+    background-color: black;
+}
