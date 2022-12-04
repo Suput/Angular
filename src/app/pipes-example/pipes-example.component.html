@@ -1,0 +1,17 @@
+<div>{{ welcome | uppercase }}</div>
+<div>{{ welcome | lowercase }}</div>
+<hr />
+<div>{{ persentage }}</div>
+<div>{{ persentage | percent }}</div>
+<div>{{ persentage | currency }}</div>
+<hr />
+<div>{{ myDate }}</div>
+<div>My Format - {{ myDate | date : "dd.MM.yyyy" }}</div>
+<div>Short Format - {{ myDate | date : "short" }}</div>
+<div>My Format 2 - {{ myDate | date : "d.M.YY HH:mm:ss" }}</div>
+<hr>
+<div>{{persentage | currency:'RUB':'code'}}</div>
+<div>{{persentage | currency:'RUB':'symbol-narrow'}}</div>
+<div>{{persentage | currency:'RUB':'symbol':'1.1-1'}}</div>
+<div>{{persentage | currency:'RUB':'symbol-narrow':'1.1-1'}}</div>
+<div>{{persentage | currency:'RUB':'тока седня по цене '}}</div>

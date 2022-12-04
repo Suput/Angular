@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  age: number = 1232130;
+  name: string = "Tom";
+
+  clicks: number = 0;
+  increase_decrease(increased: boolean){
+      increased == true ? this.clicks++ : this.clicks--;
+  }
 }
