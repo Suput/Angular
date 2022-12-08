@@ -1,0 +1,11 @@
+<div>
+  <div>
+    <input [(ngModel)]="name" placeholder="Телефон" />
+    <button (click)="addItem(name)">Добавить</button>
+  </div>
+  <table>
+    <tr *ngFor="let item of items">
+      <td>{{ item }}</td>
+    </tr>
+  </table>
+</div>

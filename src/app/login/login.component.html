@@ -1,0 +1,23 @@
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="make_login()">
+    <div>
+        <label>
+            Username: <input type="text" formControlName="username" />
+        </label>
+        <div class="alert alert-danger"
+            *ngIf="loginForm.controls['username'].invalid && loginForm.controls['username'].touched">
+            Некорректное имя пользователя
+        </div>
+    </div>
+    <div>
+        <label>
+          Password: <input type="password" formControlName="password" />
+        </label>
+        <div class="alert alert-danger"
+            *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+            Некорректный пароль
+        </div>
+    </div>
+    <button type="submit" [disabled]="!loginForm.valid">Login</button>
+  </form>
+</div>
