@@ -9,6 +9,7 @@ import { PhonesComponent } from './phones/phones.component';
 import { ItemComponent } from './item/item.component';
 import { ItemInfoComponent } from './item-info/item-info.component';
 import { ItemStatComponent } from './item-stat/item-stat.component';
+import { PhonesInfoComponent } from './phones-info/phones-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ItemStatComponent } from './item-stat/item-stat.component';
     PhonesComponent,
     ItemComponent,
     ItemInfoComponent,
-    ItemStatComponent
+    ItemStatComponent,
+    PhonesInfoComponent
   ],
   imports: [
     BrowserModule,
