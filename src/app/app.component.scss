@@ -1,0 +1,16 @@
+@import 'colors';
+@import 'global';
+
+div {
+    ul {
+        li {
+            a {
+                color: $primary-color;
+                background-color: $background-color;
+            }
+        }
+    }
+    ul {
+        @extend %reset-margin-padding;
+    }
+}
