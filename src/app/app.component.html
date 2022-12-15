@@ -1,21 +1,42 @@
 <div>
-  <ul>
-    <li><a href="https://google.com">google</a></li>
-    <li><a href="https://google.com">google</a></li>
-    <li><a href="https://google.com">google</a></li>
-    <li><a href="https://google.com">google</a></li>
-    <li><a href="https://google.com">google</a></li>
-  </ul>
-  <button mat-raised-button color="primary">Primary</button>
-  <button mat-fab matTooltip="Primary" color="primary" aria-label="Example fab with a heart icon">
-    <mat-icon>android</mat-icon>
-  </button>
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Telephone</mat-label>
-      <span matPrefix>+7 &nbsp;</span>
-      <input type="tel" matInput placeholder="555-555-1234">
-      <mat-icon matSuffix>phone</mat-icon>
-    </mat-form-field>
-  </form>
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/">Posts</a>
+          </li>
+          <li class="nav-item" *ngIf="!is_logged()">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="!is_logged()">
+            <a class="nav-link" routerLink="/register">Register</a>
+          </li>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="logout()"
+            *ngIf="is_logged()"
+          >
+            Logout from {{ get_username() }}
+          </button>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>

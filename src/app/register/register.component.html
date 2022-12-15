@@ -1,0 +1,127 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div>
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="registerForm.controls['firstname']"
+          placeholder="Ivan"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Last name</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="registerForm.controls['lastname']"
+          placeholder="Ivanov"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Middle name</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="registerForm.controls['middlename']"
+          placeholder="Ivanovich"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="registerForm.controls['email']"
+          placeholder="Ex. example@mail.ru"
+        />
+        <mat-error
+          *ngIf="
+            registerForm.controls['email'].hasError('email') &&
+            !registerForm.controls['email'].hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="registerForm.controls['password']"
+        />
+        <mat-error
+          *ngIf="
+            registerForm.controls['password'].hasError('minlength') &&
+            !registerForm.controls['password'].hasError('required')
+          "
+        >
+          Minimum 10 symbols
+        </mat-error>
+        <mat-error
+          *ngIf="registerForm.controls['password'].hasError('required')"
+        >
+          Passwowrd is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Repeat password</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="registerForm.controls['password_again']"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Birth date</mat-label>
+        <input
+          type="date"
+          matInput
+          [formControl]="registerForm.controls['birthdate']"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Please choose gender</mat-label>
+        <mat-select [formControl]="registerForm.controls['gender']" name="food">
+          <mat-option *ngFor="let gen of genders" [value]="gen.value">
+            {{ gen.view }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button
+      type="submit"
+      [disabled]="!registerForm.valid"
+      mat-raised-button
+      color="primary"
+    >
+      Register
+    </button>
+  </form>
+</div>
