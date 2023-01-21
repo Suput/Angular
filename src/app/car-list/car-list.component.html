@@ -1,0 +1,13 @@
+<button (click)="get_cars()">Update cars</button>
+<div *ngFor="let car of cars" style="margin-bottom: 20px;">
+  <a [routerLink]="['car', car.id]">Ссылка на машину</a>
+  <br>
+  {{ car.marka }}
+  <br />
+  {{ car.model }}
+  <br />
+  {{ car.creation_date }}
+  <br />
+  {{ car.price }}
+  <br />
+</div>
