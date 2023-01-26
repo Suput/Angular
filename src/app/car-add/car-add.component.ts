@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Car } from '../models/car';
 import { DataService } from '../services/data.service';
 
@@ -14,7 +15,7 @@ export class CarAddComponent implements OnInit {
   new_car_date: string = '';
   new_car_price: number = 0;
 
-  constructor(private data_service: DataService) { }
+  constructor(private data_service: DataService, private router: Router) { }
 
   ngOnInit(): void {}
 
@@ -27,5 +28,6 @@ export class CarAddComponent implements OnInit {
       price: this.new_car_price,
     };
     this.data_service.add_car(new_car);
+    this.router.navigate(['/']);
   }
 }

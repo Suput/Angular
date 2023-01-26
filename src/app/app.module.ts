@@ -9,13 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarOneComponent } from './car-one/car-one.component';
 import { CarAddComponent } from './car-add/car-add.component';
+import { CubeComponent } from './cube/cube.component';
+import { ModelComponent } from './model/model.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarListComponent,
     CarOneComponent,
-    CarAddComponent
+    CarAddComponent,
+    CubeComponent,
+    ModelComponent
   ],
   imports: [
     BrowserModule,
