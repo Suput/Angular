@@ -1,5 +1,12 @@
-import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef } from '@angular/core';
-import * as THREE from "three";
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Input,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
+import * as THREE from 'three';
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
@@ -7,10 +14,9 @@ import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 @Component({
   selector: 'app-model',
   templateUrl: './model.component.html',
-  styleUrls: ['./model.component.css']
+  styleUrls: ['./model.component.css'],
 })
 export class ModelComponent implements OnInit, AfterViewInit {
-
   @ViewChild('canvas') private canvasRef: ElementRef;
 
   //* Stage Properties
@@ -89,11 +95,11 @@ export class ModelComponent implements OnInit, AfterViewInit {
    * @private
    * @memberof CubeComponent
    */
-  private createScene() {
+  private createScene(model: string) {
     //* Scene
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0xd4d4d8)
-    this.loaderGLTF.load('assets/robot/scene.gltf', (gltf: GLTF) => {
+    this.scene.background = new THREE.Color(0xd4d4d8);
+    this.loaderGLTF.load(model, (gltf: GLTF) => {
       this.model = gltf.scene.children[0];
       console.log(this.model);
       var box = new THREE.Box3().setFromObject(this.model);
@@ -108,7 +114,7 @@ export class ModelComponent implements OnInit, AfterViewInit {
       aspectRatio,
       this.nearClippingPane,
       this.farClippingPane
-    )
+    );
     this.camera.position.x = 100;
     this.camera.position.y = 100;
     this.camera.position.z = 100;
@@ -137,15 +143,18 @@ export class ModelComponent implements OnInit, AfterViewInit {
   }
 
   /**
- * Start the rendering loop
- *
- * @private
- * @memberof CubeComponent
- */
+   * Start the rendering loop
+   *
+   * @private
+   * @memberof CubeComponent
+   */
   private startRenderingLoop() {
     //* Renderer
     // Use canvas element in template
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true });
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: true,
+    });
     this.renderer.setPixelRatio(devicePixelRatio);
     this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
     let component: ModelComponent = this;
@@ -153,20 +162,29 @@ export class ModelComponent implements OnInit, AfterViewInit {
       component.renderer.render(component.scene, component.camera);
       component.animateModel();
       requestAnimationFrame(render);
-    }());
+    })();
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+  car_model_path: string = 'assets/car/car.gltf';
+  robot_model_path: string = 'assets/robot/scene.gltf';
+  model_path: string = this.car_model_path;
+
+  change() {
+    console.log("change model");
+    if (this.model_path == this.car_model_path)
+      this.model_path = this.robot_model_path;
+    else
+      this.model_path = this.car_model_path;
+    this.ngAfterViewInit();
   }
 
   ngAfterViewInit() {
-    this.createScene();
+    this.createScene(this.model_path);
     this.startRenderingLoop();
     this.createControls();
   }
-
-
 }
